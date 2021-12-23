@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Hobbie;
+use App\Models\CustomerHobbie;
 use Illuminate\Database\Seeder;
 
-class HobbieSeeder extends Seeder
+class CustomerHobbieSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class HobbieSeeder extends Seeder
      */
     public function run()
     {
-        Hobbie::factory()->count(10)->create();
+        CustomerHobbie::factory()->count(50)->create();
     }
 }
