@@ -29,8 +29,8 @@ class CreateInitialTables extends Migration
 
         Schema::create('customers_hobbies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('customers');
-            $table->foreignId('hobbie_id')->constrained('hobbies');
+            $table->foreignId('customer_id')->constrained('customers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('hobbie_id')->constrained('hobbies')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

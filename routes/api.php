@@ -25,4 +25,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware(['auth:sanctum'])->post('/logout', [AuthController::class, 'logout']);
 
 // Customer CRUD
-Route::resource('customers', CustomerController::class);
+// Route::resource('customers', CustomerController::class)->middleware(['auth:sanctum']);
+Route::middleware(['auth:sanctum', 'customer.permision'])->group(function () {
+    Route::get('/customers/{customer}', [CustomerController::class, 'show']);
+    Route::put('/customers/{customer}', [CustomerController::class, 'update']);
+    Route::delete('/customers/{customer}', [CustomerController::class, 'destroy']);
+});

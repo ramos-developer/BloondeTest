@@ -16,7 +16,7 @@ class UserCustomerPermission
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->profile_id == 1 || $request->input('customer.user_id') == auth()->user()->id) {
+        if (auth()->user()->profile_id == 1 || $request->input('user_id') == auth()->user()->id) {
 
             return $next($request);
         } else {
