@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class UserCustomerPermission
+class AdminPermission
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,7 @@ class UserCustomerPermission
      */
     public function handle(Request $request, Closure $next)
     {
-        $customer_id = $request->route()->parameters()['customer'];
-        if (auth()->user()->profile_id == 1 || $customer_id == auth()->user()->customer->id) {
+        if (auth()->user()->profile_id == 1) {
 
             return $next($request);
         } else {

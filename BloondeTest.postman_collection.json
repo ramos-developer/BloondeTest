@@ -1,0 +1,289 @@
+{
+	"info": {
+		"_postman_id": "f9ce4bfe-1f98-4a48-a852-0d9b25466ff2",
+		"name": "BloondeTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "administrador@admin.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "bloonde4dm1n",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://www.bloondetest.es/api/login",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|HfwagyvDDN5VYtpUSarirZR8RsRmCYdY8rANdD6z",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://www.bloondetest.es/api/logout",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				},
+				"description": "bearer token obtenido en login"
+			},
+			"response": []
+		},
+		{
+			"name": "customers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|kXVkjrOqShoZFi49st4vzgUwCeb5YWdFKk3LrlIk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.bloondetest.es/api/customers",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				},
+				"description": "Bearer token generado en login"
+			},
+			"response": []
+		},
+		{
+			"name": "customer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|lMGIuc1z9Qq7P6ZCMcdU16sEUzjV7d6VCh0t3Vha",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.bloondetest.es/api/customers/2",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"customers",
+						"2"
+					]
+				},
+				"description": "bearer token"
+			},
+			"response": []
+		},
+		{
+			"name": "customer Delete",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|lMGIuc1z9Qq7P6ZCMcdU16sEUzjV7d6VCh0t3Vha",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://www.bloondetest.es/api/customers/2",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"customers",
+						"2"
+					]
+				},
+				"description": "bearer token"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Customer with Hobbies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|lMGIuc1z9Qq7P6ZCMcdU16sEUzjV7d6VCh0t3Vha",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Manuel\",\n    \"surname\": \"Povea\",\n    \"user_id\": \"2\",\n    \"hobbies\": [\n            1,2,3\n        ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bloondetest.es/api/customers",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Customer with Hobbies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|lMGIuc1z9Qq7P6ZCMcdU16sEUzjV7d6VCh0t3Vha",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Manuel\",\n    \"surname\": \"Povea\",\n    \"user_id\": \"2\",\n    \"hobbies\": [\n            1,2,5\n        ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.bloondetest.es/api/customers/20",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"customers",
+						"20"
+					]
+				},
+				"description": "Debe incluir un rarray \"hobbies\" "
+			},
+			"response": []
+		},
+		{
+			"name": "Export PDF",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "1|lMGIuc1z9Qq7P6ZCMcdU16sEUzjV7d6VCh0t3Vha",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://www.bloondetest.es/api/export",
+					"protocol": "http",
+					"host": [
+						"www",
+						"bloondetest",
+						"es"
+					],
+					"path": [
+						"api",
+						"export"
+					]
+				},
+				"description": "Exportación a PDF\nAccesible via web también desde /export para pruebas (sin login)"
+			},
+			"response": []
+		}
+	]
+}
