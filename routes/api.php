@@ -28,17 +28,17 @@ Route::middleware(['auth:sanctum'])->post('/logout', [AuthController::class, 'lo
 // Customer CRUD
 
 // Reservado solo a admins
-Route::middleware(['auth:sanctum','admin.permision'])->group(function () {
+Route::middleware(['auth:sanctum','abilities:all_privileges'])->group(function () {
     Route::post('/customers', [CustomerController::class, 'store']);
     Route::get('/customers', [CustomerController::class, 'index']);
     Route::get('/export', [ExportPdfController::class, 'exportCustomers']);
+    Route::delete('/customers/{customer}', [CustomerController::class, 'destroy']);
 });
 
 // Solo Admins o el propio user
-Route::middleware(['auth:sanctum', 'customer.permision'])->group(function () {
-    Route::get('/customers/{customer}', [CustomerController::class, 'show']);
-    Route::put('/customers/{customer}', [CustomerController::class, 'update']);
-    Route::delete('/customers/{customer}', [CustomerController::class, 'destroy']);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/customers/{customer}', [CustomerController::class, 'show'])->middleware(['ability:all_privileges,customer-show']);
+    Route::put('/customers/{customer}', [CustomerController::class, 'update'])->middleware(['ability:all_privileges,customer-show']);
 });
 
 

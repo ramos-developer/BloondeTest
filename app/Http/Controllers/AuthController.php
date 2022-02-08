@@ -25,8 +25,9 @@ class AuthController extends Controller
             ];
 
         } else {
+            $privileges = config('privileges');
             // Token generado por el método createToken de Laravel Sanctum
-            $token = $user->createToken($fields['email'])->plainTextToken;
+            $token = $user->createToken($fields['email'], $privileges[$user->profile_id])->plainTextToken;
             $response = [
                 'user' => $user,
                 'token' => $token
